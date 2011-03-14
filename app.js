@@ -10,7 +10,7 @@ app.get('/', function(req,res) {
 })
 
 app.get('/nrecipe*?', function(req,res) {
-  nrecipe.route(req,res);
+  nrecipe.reroute(req,res)
 })
 
 app.listen(3000)
