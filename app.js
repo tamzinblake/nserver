@@ -13,4 +13,8 @@ app.get('/nrecipe*?', function(req,res) {
   nrecipe.reroute(req,res)
 })
 
+app.get('/ext/*?', function(req,res) {
+  res.sendfile('/m/ext/'+req.params[0])
+})
+
 app.listen(3000)
