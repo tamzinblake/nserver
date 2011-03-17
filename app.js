@@ -1,7 +1,8 @@
 var express = require('express')
 var nrecipe = require('./nrecipe/nrecipe')
 
-var app = express.createServer()
+var app = express.createServer( express.bodyParser()
+                              )
 
 app.get('/', function(req,res) {
   res.send( 'You may be looking for'
