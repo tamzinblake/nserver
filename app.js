@@ -11,11 +11,11 @@ app.get('/', function(req,res) {
 })
 
 app.get('/nrecipe*?', function(req,res) {
-  nrecipe.reroute(req,res,'GET')
+  nrecipe(req,res,'GET')
 })
 
 app.post('/nrecipe*?', function(req,res) {
-  nrecipe.reroute(req,res,'POST')
+  nrecipe(req,res,'POST')
 })
 
 app.get('/ext/*?', function(req,res) {
