@@ -19,13 +19,13 @@ module.exports =
               , method: 'POST'
               , name: 'nrecipe'
               }
-            , { path: '/refmate*?'
+            , { path: '/blog*?'
               , method: 'GET'
-              , name: 'refmate'
+              , name: 'blog'
               }
-            , { path: '/refmate*?'
+            , { path: '/blog*?'
               , method: 'POST'
-              , name: 'refmate'
+              , name: 'blog'
               }
             , { path: '/ext/*?'
               , method: 'GET'
