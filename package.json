@@ -14,6 +14,9 @@
   { "lib" : "./lib"
   , "etc" : "./etc"
   }
+, "dependencies" :
+  { "express" : "*"
+  }
 , "bundleDependencies" :
   [ "nrecipe"
   , "blog"
