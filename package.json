@@ -8,7 +8,7 @@
   , "url" : "https://github.com/thomblake/nserver.git"
   }
 , "bugs" :
-  { "web" : "http://github.com/isaacs/npm/issues"
+  { "web" : "http://github.com/thomblake/nserver/issues"
   }
 , "directories" :
   { "lib" : "./lib"
