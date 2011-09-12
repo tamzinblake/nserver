@@ -35,5 +35,5 @@ module.exports =
               }
             ]
   , port: 3000
-  , route_root: './'
+  , route_root: './node_modules/'
   }
