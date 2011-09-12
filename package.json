@@ -15,7 +15,9 @@
   , "etc" : "./etc"
   }
 , "dependencies" :
-  { "express" : "*"
+  { "nrecipe" : "*"
+  , "blog" : "*"
+  , "express" : "*"
   }
 , "bundleDependencies" :
   [ "nrecipe"
