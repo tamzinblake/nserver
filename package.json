@@ -11,8 +11,7 @@
   { "web" : "http://github.com/thomblake/nserver/issues"
   }
 , "directories" :
-  { "lib" : "./lib"
-  , "etc" : "./etc"
+  { "etc" : "./etc"
   }
 , "dependencies" :
   { "nrecipe" : "*"
