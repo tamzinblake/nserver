@@ -12,10 +12,14 @@ for (var i = 0; i < conf.routes.length; i++) {
     required[route.name] = require(conf.route_root + route.name)
   }
   app[method]( route.path
-             , route.action !== undefined ? route.action : function (req, res) {
-                 required[route.name](req, res, route.method)
-               }
+             , route.action !== undefined ? route.action : rerouteFactory(route)
              )
+}
+
+function rerouteFactory (route) {
+  return function (req, res) {
+    required[route.name](req, res, route.method)
+  }
 }
 
 app.listen(conf.port || 3000)
