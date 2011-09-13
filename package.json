@@ -2,7 +2,7 @@
 , "author" : "Thom Blake <thethomblake@gmail.com> (http://thomblake.com)"
 , "description" : "A simple wrapper for express to serve little node projects"
 , "keywords" : [ "express", "server" ]
-, "version" : "0.0.0"
+, "version" : "0.0.0-1"
 , "repository" :
   { "type" : "git"
   , "url" : "https://github.com/thomblake/nserver.git"
