@@ -6,7 +6,7 @@ module.exports =
   { routes: [ { path: '/'
               , method: 'GET'
               , action: function (req, res) {
-                  res.send( 'You may be looking for'
+                  res.send( 'You may be looking for '
                           + '<a href="http://lesswrong.com">Less Wrong</a>'
                           )
                 }
