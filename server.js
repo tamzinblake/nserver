@@ -4,6 +4,8 @@ var conf = require('./etc/conf.js')
 var app = express.createServer( express.bodyParser() )
   , required = {}
 
+app.use(express.favicon(__dirname + '/favicon.ico'));
+
 for (var i = 0; i < conf.routes.length; i++) {
   var route = conf.routes[i]
   var method = route.method.match(/^(get|post)$/i) ? route.method.toLowerCase()

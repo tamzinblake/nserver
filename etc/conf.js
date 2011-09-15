@@ -2,8 +2,6 @@
  * 'name' is the name of a rerouting module stored under route_root.
  * 'action' is a function that takes (request, response) as params.
  */
-var path = require('path')
-
 module.exports =
   { routes: [ { path: '/'
               , method: 'GET'
@@ -28,12 +26,6 @@ module.exports =
             , { path: '/blog*?'
               , method: 'POST'
               , name: 'blog'
-              }
-            , { path: '/favicon.ico'
-              , method: 'GET'
-              , action: function (req, res) {
-                  res.sendfile(path.resolve('..', 'favicon.ico'))
-                }
               }
             , { path: '/ext/*?'
               , method: 'GET'
