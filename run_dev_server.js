@@ -1,29 +1,7 @@
-#!/usr/local/bin/node
-
 var child_process = require('child_process')
-  , daemon = require('daemon')
   , fs = require('fs')
   , sys = require('sys')
-  , lockFile = '/var/run/nserver.pid'
-
-switch(process.argv[2]) {
-  case "stop": {
-    process.kill(parseInt(fs.readFileSync(lockFile)))
-    process.exit(0)
-    break
-  }
-  case "start": {
-    daemon.start()
-    daemon.lock(lockFile)
-    break
-  }
-  default: {
-    sys.puts('Usage: [start|stop]')
-    process.exit(0)
-  }
-}
-
-var dev_server =
+  , dev_server =
     { process: null
     , files: []
     , restarting: false
@@ -90,5 +68,9 @@ var dev_server =
         this.files = []
       }
     }
+
+process.on('exit', function () {
+             dev_server.process.kill()
+           })
 
 dev_server.start()
