@@ -26,4 +26,4 @@ function rerouteFactory (route) {
   }
 }
 
-app.listen(conf.port || 3000)
+app.listen(conf.port || 80)
