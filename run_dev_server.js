@@ -43,7 +43,7 @@ var child_process = require('child_process')
     , watchFiles: function () {
         var that = this
         child_process
-          .exec( 'find -L . | grep -v "[.]git"'
+          .exec( 'find -L . | grep -v "[.]git" | grep -v "~"'
                , function (error, stdout, stderr) {
                    var files = stdout.trim().split("\n")
                    files.forEach( function (file) {
