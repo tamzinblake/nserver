@@ -20,6 +20,12 @@ for (var i = 0; i < conf.routes.length; i++) {
              )
 }
 
+app.get('/htdocs/pub/*?'
+       , function (req, res) {
+           res.sendfile('htdocs/pub/' + req.params[0])
+         }
+       )
+
 function rerouteFactory (route) {
   return function (req, res) {
     required[route.name](req, res, route.method)
