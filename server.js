@@ -1,35 +1,21 @@
+/* global require __dirname */
 var express = require('express')
-  , conf = require('./etc/conf.js')
+  , blog = require('blog')
+  , nrecipe = require('nrecipe')
+  , netboom = require('netboom')
 
 var app = express.createServer( express.bodyParser() )
   , required = {}
 
-app.use(express.favicon(__dirname + '/favicon.ico'));
+app.use(express.favicon(__dirname + '/htdocs/favicon.ico'));
+app.use(express.static(__dirname + '/htdocs'));
 
-for (var i = 0; i < conf.routes.length; i++) {
-  var route = conf.routes[i]
-  var method = route.method.match(/^(get|post)$/i) ? route.method.toLowerCase()
-             : 'get'
-  if (route.name !== undefined) {
-    required[route.name] = require(conf.route_root + route.name)
-  }
-  app[method]( route.path
-             , ( route.action !== undefined
-               ? route.action
-               : rerouteFactory(route))
-             )
-}
+app.get(  '/', blog.index)
+app.get(  '/blog*?', blog.reroute)
+app.post( '/blog*?', blog.reroute)
+app.get(  '/nrecipe*?', nrecipe.reroute)
+app.post( '/nrecipe*?', nrecipe.reroute)
+app.get(  '/netboom*?', netboom.reroute)
+app.post( '/netboom*?', netboom.reroute)
 
-app.get('/htdocs/pub/*?'
-       , function (req, res) {
-           res.sendfile('htdocs/pub/' + req.params[0])
-         }
-       )
-
-function rerouteFactory (route) {
-  return function (req, res) {
-    required[route.name](req, res, route.method)
-  }
-}
-
-app.listen(conf.port || 80)
+app.listen(80)
