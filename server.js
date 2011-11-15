@@ -6,9 +6,10 @@ var express = require('express')
 
 var app = express.createServer( express.bodyParser() )
   , required = {}
+  , oneYear = 31557600000
 
 app.use(express.favicon(__dirname + '/htdocs/favicon.ico'));
-app.use(express.static(__dirname + '/htdocs'));
+app.use(express.static(__dirname + '/htdocs', { maxAge: oneYear }));
 
 app.get(  '/', blog.index)
 app.get(  '/blog*?', blog.reroute)
