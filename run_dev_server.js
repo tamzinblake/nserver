@@ -4,19 +4,19 @@
  */
 var child_process = require('child_process')
   , fs = require('fs')
-  , sys = require('sys')
+  , util = require('util')
   , dev_server
       = { process: null
         , files: []
         , restarting: false
         , restart: function () {
             this.restarting = true
-            sys.debug('DEVSERVER: Stopping server for restart')
+            util.debug('DEVSERVER: Stopping server for restart')
             this.process.kill()
           }
         , start: function () {
             var that = this
-            sys.debug('DEVSERVER: Starting server')
+            util.debug('DEVSERVER: Starting server')
             that.watchFiles()
             this.process = child_process.spawn(process.ARGV[0] ,['server.js'])
             this.process.stdout
@@ -25,11 +25,11 @@ var child_process = require('child_process')
             })
             this.process.stderr
             .addListener( 'data' ,function (data) {
-              sys.print(data)
+              util.print(data)
             })
             this.process
             .addListener( 'exit' ,function (code) {
-              sys.debug('DEVSERVER: Child process exited: '+code)
+              util.debug('DEVSERVER: Child process exited: '+code)
               this.process = null
               if (that.restarting) {
                 that.restarting = true
@@ -48,7 +48,7 @@ var child_process = require('child_process')
                 fs.watchFile( file ,{interval : 500} ,function (curr ,prev) {
                   if ( curr.mtime.valueOf() != prev.mtime.valueOf()
                     || curr.ctime.valueOf() != prev.ctime.valueOf()) {
-                    sys.debug( 'DEVSERVER: Restarting because of'
+                    util.debug( 'DEVSERVER: Restarting because of'
                              + ' changed file at ' + file)
                     dev_server.restart()
                   }
